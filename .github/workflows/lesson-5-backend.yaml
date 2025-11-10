@@ -5,7 +5,21 @@ on:
     branches:
       - lesson-5
 jobs:
+  security_test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    name: Execyte the Pycharm security test 
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Pycharm Security
+        uses: tonybaloney/pycharm-security@1.25.1
+        with:
+          args: -r backend/hangry_api
+          
   build_and_test:
+    needs: [security_test]
     runs-on: ubuntu-latest
     defaults:
       run:
