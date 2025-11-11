@@ -22,3 +22,4 @@ describe('Shows Appeteasers', () => {
     cy.contains('Fajita Tacos').should('not.exist');
   });
 });
+
